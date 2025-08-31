@@ -4,7 +4,7 @@ pkgrel = 0
 build_style = "cargo"
 make_build_args = [
     "--no-default-features",
-    "--features=native-tls",
+    "--features=rustls,http3",
 ]
 make_check_args = [*make_build_args]
 hostmakedepends = [
@@ -19,8 +19,10 @@ makedepends = [
 pkgdesc = "Tool for sending HTTP requests"
 license = "MIT"
 url = "https://github.com/ducaale/xh"
-source = f"{url}/archive/refs/tags/v{pkgver}.tar.gz"
-sha256 = "6145f48cbefbb2bd1aa97ebcc8528d15ada1303e6e80fdd6a4637014f0f1df1c"
+source = f"{url}/archive/8a575d3cf1131bb0fd645d672617a539a4ef8091.tar.gz"
+sha256 = "3d542862dcc8e74e9bd4d1224c56d32fd70c6172af2630c5a9535640faf3b6e4"
+tool_flags = {"RUSTFLAGS": ["--cfg=reqwest_unstable"]}
+
 
 
 def install(self):
