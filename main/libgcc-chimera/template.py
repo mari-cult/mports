@@ -38,8 +38,7 @@ license = "Apache-2.0 WITH LLVM-exception AND NCSA"
 url = "https://llvm.org"
 source = f"https://github.com/llvm/llvm-project/releases/download/llvmorg-{pkgver}/llvm-project-{pkgver}.src.tar.xz"
 sha256 = "a01ad7e5167780c945871d75c0413081d12067607a6de5cf71dc3e8d1a82112c"
-# shim
-options = ["!check", "!lto"]
+options = ["!check"]
 
 cmake_dir = "compiler-rt"
 
@@ -83,3 +82,4 @@ def post_build(self):
 def install(self):
     self.install_license("LICENSE.TXT")
     self.install_lib(f"build/{_soname}")
+    self.install_link("usr/lib/libgcc_s.so", "libgcc_s.so.1")
