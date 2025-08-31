@@ -1,6 +1,6 @@
 pkgname = "libgcc-chimera"
 pkgver = "20.1.8"
-pkgrel = 0
+pkgrel = 1
 build_style = "cmake"
 configure_args = [
     "-DCMAKE_BUILD_TYPE=Release",
@@ -83,3 +83,4 @@ def post_build(self):
 def install(self):
     self.install_license("LICENSE.TXT")
     self.install_lib(f"build/{_soname}")
+    self.install_link("usr/lib/libgcc_s.so", "libgcc_s.so.1")
